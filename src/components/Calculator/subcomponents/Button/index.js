@@ -8,6 +8,8 @@ import {
   pressNormalOperator,
   pressEquals,
   pressClear,
+  pressPercent,
+  pressSquareRoot,
 } from "../../resources/button-functions";
 import { CalculatorContext } from "../../resources/CalculatorContext";
 import { ButtonType } from "../../resources/constants";
@@ -105,6 +107,14 @@ const Button = ({type, children}) => {
     case ButtonType.CLEAR:
       return () => {
         pressClear(setCurrentValue);
+      }
+    case ButtonType.PERCENT:
+      return () => {
+        pressPercent(currentValue, setCurrentValue);
+      }
+    case ButtonType.SQUARE_ROOT:
+      return () => {
+        pressSquareRoot(currentValue, setCurrentValue);
       }
 
     }
