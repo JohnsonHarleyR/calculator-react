@@ -1,12 +1,20 @@
-import { useEffect, useRef } from "react"
+import { useContext, useEffect, useRef } from "react"
+import { CalculatorContext } from "../../resources/CalculatorContext";
 
+const Display = ({}) => {
 
-const Display = ({mainText, topCornerText}) => {
+  const {
+    isOn,
+    currentValue,
+  } = useContext(CalculatorContext);
 
   return (
     <div className="display">
       <div className="main-text">
-        {mainText}
+        { isOn
+          ? currentValue
+          : ''
+        }
       </div>
     </div>
   )

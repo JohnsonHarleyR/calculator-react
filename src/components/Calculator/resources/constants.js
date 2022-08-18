@@ -5,7 +5,7 @@ export const Defaults = {
 
 export const ButtonType = {
   EQUALS: 'EQUALS',
-  ON_OFF: 'ON_OFF',
+  ON_AC: 'ON_AC',
   ZERO: 'ZERO',
   DOT: 'DOT',
   PLUS_MINUS: 'PLUS_MINUS',

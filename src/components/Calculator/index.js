@@ -1,23 +1,42 @@
 import './styling/css/calculator.css';
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CalculatorContext } from './resources/CalculatorContext';
 import { ButtonType, Defaults } from "./resources/constants";
 import Display from './subcomponents/Display';
 import Button from './subcomponents/Button';
 
 const Calculator = ({}) => {
 
-  const [isOn, setIsOn] = useState(false);
+  const {
+    isOn, setIsOn,
+  } = useContext(CalculatorContext);
+
   const [mainText, setMainText] = useState(Defaults.MAIN_TEXT);
   const [buttons, setButtons] = useState(<></>);
+
+
+  //#region Effects
 
   useEffect(() => {
     setButtons(createButtons());
   }, []);
 
+  //#endregion
+
+  //#region Normal Functions
+
   const createButtons = () => {
     let order = [
       // first row
-      {type: ButtonType.ON_OFF, text: 'AC'},
+      {
+        type: ButtonType.ON_AC,
+        text: 
+          <div>
+            <span>ON</span>
+            <span>/</span>
+            <span>AC</span>
+          </div>
+        },
       {type: ButtonType.SEVEN, text: '7'},
       {type: ButtonType.EIGHT, text: '8'},
       {type: ButtonType.NINE, text: '9'},
@@ -41,7 +60,10 @@ const Calculator = ({}) => {
       {type: ButtonType.SQUARE_ROOT, text: '√'},
       {type: ButtonType.ZERO, text: '0'},
       {type: ButtonType.DOT, text: '.'},
-      {type: ButtonType.PLUS_MINUS, text: '+/-'},
+      {
+        type: ButtonType.PLUS_MINUS,
+        text: '+/-'
+      },
       {type: ButtonType.ADD, text: '+'},
 
       // fifth row
@@ -63,12 +85,16 @@ const Calculator = ({}) => {
     return newButtons;
   }
 
+  //#endregion
+
+  //#region Event Handlers
+
+  //#endregion
+
   return (
     <div className="calculator">
       <div className='calc-display'>
-        <Display 
-          mainText={mainText}
-        />
+        <Display />
 
         {/* Buttons */}
         {buttons}
