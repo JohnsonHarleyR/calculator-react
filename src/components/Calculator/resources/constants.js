@@ -1,6 +1,7 @@
 
 export const Defaults = {
   MAIN_TEXT: '0',
+  MAX_DIGITS: 15,
 }
 
 export const ButtonType = {

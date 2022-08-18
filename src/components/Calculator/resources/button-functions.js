@@ -1,7 +1,7 @@
 
 //#region Helpers
 
-import { ButtonType } from "./constants";
+import { ButtonType, Defaults } from "./constants";
 
 const isCharacterInString = (str, char) => {
   for (let i = 0; i < str.length; i++) {
@@ -56,24 +56,36 @@ const performCalculation = (
       result = value1 * value2;
       break;
   }
-  return `${result}`;
+  result = roundToMax(result);
+  return result;
 }
 
 const calculatePercent = (value) => {
   let parsed = parseFloat(value);
   let calculated = parsed / 100;
-  return `${calculated}`;
+  let result = roundToMax(calculated);
+  return result;
 }
 
 const calculateSquareRoot = (value) => {
   let parsed = parseFloat(value);
   let calculated = Math.sqrt(parsed);
-  return `${calculated}`;
+  let result = roundToMax(calculated);
+  return result;
 }
 
 const canCalculateSquareRoot = (value) => {
   let parsed = parseFloat(value);
   return parsed >= 0;
+}
+
+const roundToMax = (value) => {
+  if (`${value}`.length > Defaults.MAX_DIGITS) {
+    let parsed = parseFloat(value);
+    parsed = +parsed.toFixed(Defaults.MAX_DIGITS - 1);
+    return `${parsed}`;
+  }
+  return value;
 }
 
 
