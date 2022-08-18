@@ -5,31 +5,42 @@ const CalculatorContext = createContext({});
 const CalculatorProvider = ({children}) => {
 
   const [isOn, setIsOn] = useState(false);
+  const [prevValue, setPrevValue] = useState(null);
   const [currentValue, setCurrentValue] = useState('0');
-  const [currentSign, setCurrentSign] = useState(null);
+  const [currentOperator, setCurrentOperator] = useState(null);
   const [result, setResult] = useState(null);
   const [prevResult, setPrevResult] = useState(null);
+
+
+  // useEffect(() => {
+  //   if (currentOperator !== null && currentOperator !== undefined) {
+  //     setPrevValue(currentValue);
+  //     setCurrentValue('0');
+  //   }
+  // }, [currentOperator]);
 
   const clearAll = () => {
     setPrevResult(null);
     setResult(null);
-    setCurrentSign(null);
-    setCurrentValue(0);
+    setCurrentOperator(null);
+    setPrevValue(null);
+    setCurrentValue('0');
   }
 
 
-    return (
-        <CalculatorContext.Provider value={{
-          clearAll,
-          isOn, setIsOn,
-          currentValue, setCurrentValue,
-          currentSign, setCurrentSign,
-          result, setResult,
-          prevResult, setPrevResult,
-        }}>
-            {children}
-        </CalculatorContext.Provider>
-    );
+  return (
+    <CalculatorContext.Provider value={{
+      clearAll,
+      isOn, setIsOn,
+      prevValue, setPrevValue,
+      currentValue, setCurrentValue,
+      currentOperator, setCurrentOperator,
+      result, setResult,
+      prevResult, setPrevResult,
+    }}>
+        {children}
+    </CalculatorContext.Provider>
+  );
 
 }
 

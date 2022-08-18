@@ -92,10 +92,26 @@
         justify-content: flex-start;
         align-items: flex-end;
         font-weight: 400;
+        position: relative;
 
         .main-text {
           padding: .1ch .5ch;
-          font-size: 2ch;
+          font-size: 2.1ch;
+
+        }
+        .operator-text {
+          padding: 0 .8ch;
+          margin-bottom: -.6ch;
+          font-size: 1.5ch;
+        }
+
+        .prev-value-text {
+          // position: absolute;
+          // bottom: .3ch;
+          // left: .8ch;
+          padding: 0 .8ch;
+          margin-bottom: -.6ch;
+          font-size: 1.5ch;
         }
       }
 
