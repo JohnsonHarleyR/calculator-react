@@ -1,0 +1,89 @@
+:root {
+  --font: monospace;
+  --calc-bg-color: #E5E0DB;
+  --calc-border-color: #464542;
+  --display-border-color: #797979;
+  --display-bg-color: #ABABAB;
+  --button-border-color: #797979;
+  --button-bg-color: #fff;
+  --button-default-text-color: #464542;
+}
+
+.calculator {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid var(--calc-border-color);
+  border-radius: 1ch;
+  background-color: var(--calc-bg-color);
+  font-family: var(--font);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, var(--calc-border-color) 0px 30px 60px -30px;
+}
+.calculator .calc-display {
+  margin: 1.2ch;
+  margin-top: 1.7ch;
+  margin-bottom: 1.7ch;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  gap: 0.7ch;
+  color: var(--calc-border-color);
+}
+.calculator .calc-display .button {
+  border: 2px solid var(--button-border-color);
+  background-color: var(--button-bg-color);
+  color: var(--button-default-text-color);
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0.5ch 0.1ch;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--display-bg-color) 0px 2px 5px -1px, var(--calc-border-color) 0px 1px 3px -1px;
+  cursor: pointer;
+}
+.calculator .calc-display .display {
+  border: 3px solid var(--display-border-color);
+  background-color: var(--display-bg-color);
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: flex-end;
+  font-weight: 400;
+}
+.calculator .calc-display .display .main-text {
+  padding: 0.1ch 0.5ch;
+  font-size: 2ch;
+}
+.calculator .calc-display div {
+  border-radius: 0.5ch;
+}
+.calculator .calc-display div:nth-child(1) {
+  grid-column-start: 1;
+  grid-column-end: span 5;
+  grid-row-start: 1;
+  grid-row-end: span 2;
+}
+.calculator .calc-display div:nth-child(n+2):nth-child(-n+20) {
+  grid-column-end: span 1;
+  grid-row-end: span 1;
+}
+.calculator .calc-display div:nth-child(21) {
+  grid-column-start: 5;
+  grid-column-end: span 1;
+  grid-row-start: 6;
+  grid-row-end: span 2;
+}
+.calculator .calc-display div:nth-child(22) {
+  grid-column-start: 1;
+  grid-column-end: span 4;
+  grid-row-start: 7;
+  grid-row-end: span 1;
+}
+
+/*# sourceMappingURL=calculator.css.map */
