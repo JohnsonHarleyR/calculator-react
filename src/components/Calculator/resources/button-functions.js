@@ -13,6 +13,19 @@ const isCharacterInString = (str, char) => {
   return false;
 }
 
+const trimMinus = (str) => {
+  if (`${str}`.substring(0, 1) === '-') {
+    return str.substring(1);
+  }
+  return str;
+}
+
+// const doesEndInZero = (str) => {
+//   if (str.substring(str.length - 1) === '0') {
+
+//   }
+// }
+
 //#endregion
 
 //#region
@@ -31,11 +44,31 @@ export const pressDot = (currentValue, setCurrentValue) => {
 }
 
 export const pressZero = (currentValue, setCurrentValue) => {
-  if (currentValue === '0') {
+  if (`${trimMinus(currentValue)}` === '0') {
     return;
   }
   let newValue = `${currentValue}0`;
   setCurrentValue(newValue);
+}
+
+export const pressNumber = (number, currentValue, setCurrentValue) => {
+  let newValue = `${trimMinus(currentValue)}` !== '0'
+    ? `${currentValue}${number}`
+    : `${number}`;
+  if (isCharacterInString(`${currentValue}`, '-') &&
+      !isCharacterInString(`${newValue}`, '-')) {
+    newValue = `-${newValue}`;
+  }
+  setCurrentValue(newValue);
+}
+
+export const pressPlusMinus = (currentValue, setCurrentValue) => {
+  
+  let newValue = isCharacterInString(currentValue, '-')
+    ? currentValue.substring(1)
+    : `-${currentValue}`;
+
+    setCurrentValue(newValue);
 }
 
 //#endregion
